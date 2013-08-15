@@ -180,8 +180,15 @@ if (!jQuery) { throw new Error("JqTerm requires jQuery") }
 					e.preventDefault();
 				}
 			}
+
 			
 		});
+
+		self.$el.click(function () {
+
+				self.$input.focus();
+		});
+			
 
 		if(typeof options.interpreter === 'function') {
 
