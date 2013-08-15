@@ -13,7 +13,7 @@ In your HTML file, include the jqterm js and css files
 <link rel="stylesheet" type="text/css" href="jqterm.css" />
 ```
 
-To use emulate terminal inside div with id `foo`, use following code:
+To use emulate terminal inside div with id `terminal`, use following code:
 
 ```javascript
 
