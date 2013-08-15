@@ -1,0 +1,9 @@
+{
+	"name" : "jqterm",
+	"description" : "A JQuery plugin for a commandline emulator with custom interpreters and formatter",
+	"version" : "0.1.0",
+	"main": ["./jqterm.js", "./jqterm.css"],
+	"dependencies": {
+    "jquery": ">= 1.9.0"
+  	}
+}
