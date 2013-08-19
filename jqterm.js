@@ -1,5 +1,5 @@
 /**
-* jqterm.js v0.2.0 by @ameyms
+* jqterm.js v0.2.2 by @ameyms
 * The MIT License (MIT)
 * 
 * Copyright (c) 2013 Amey Sakhadeo
@@ -26,7 +26,7 @@
 if (!jQuery) { throw new Error("JqTerm requires jQuery") }
 
 /* ========================================================================
- * JQterm: jqterm.js v0.2.0
+ * JQterm: jqterm.js v0.2.2
  * http://ameyms.github.com/jqterm
  * ========================================================================
  *
