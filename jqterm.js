@@ -1,12 +1,28 @@
 /**
-* jqterm.js v0.1.1 by @ameyms
-* A JQuery plugin for a commandline emulator with custom interpreters and formatter
-* ==================================================================================
+* jqterm.js v0.1.0 by @ameyms
 * Copyright 2013 Amey Sakhadeo.
-*
-* Licensed under the MIT license.
-*
+* http://www.apache.org/licenses/LICENSE-2.0
 */
+
+if (!jQuery) { throw new Error("JqTerm requires jQuery") }
+
+/* ========================================================================
+ * JQterm: jqterm.js v0.1.0
+ * http://ameyms.github.com/jqterm
+ * ========================================================================
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * ======================================================================== */
 
 
 (function($, window)
@@ -70,6 +86,10 @@
         return tokens;
     }
 
+	var normalize = function (text) {
+
+		return text.replace('\\n', '\n').replace(/&/g, '&amp;').replace(/>/g, '&gt;').replace(/</g, '&lt;').replace(/\\n/g, '<br>').replace(/ /g, '&nbsp;');
+	}
     var noop = function(data) {
 
         var promise = $.Deferred();
@@ -232,13 +252,18 @@
     
         var dfd
         ,   self = this
-        ,   cmd = this.$input.text()
-        ,   tokenizedCmd = parseCmd(cmd);
+        ,   cmd = $.trim(this.$input.text())
+        ,   tokenizedCmd = cmd?parseCmd(cmd):undefined;
 
         this.appendCmd(cmd);
         this.clearInputLine();
         
-
+		if(!tokenizedCmd) {
+		
+			return;
+		
+		}
+		
         if(isSpecialCommand.call(this, tokenizedCmd)) {
 
             //do nothing else
@@ -274,8 +299,9 @@
 
     JqTerm.prototype.appendOutput = function(text) {
 
-        this.$history.append('<br/>');
-        this.$history.append($(opTemplate).text(text))
+		var op = normalize(text)
+        this.$history.append($(opTemplate).html(op));
+		
     };
 
     JqTerm.prototype.appendCmd = function(text) {
@@ -283,7 +309,10 @@
         if(this.$history.find('.jq-term-cmdline').length > 0) {
             this.$history.append('<br/>');
         }
-        this.$history.append($(cmdTemplate).text('$ '+text))
+        this.$history.append($(cmdTemplate).text('$ '+text));
+		if($.trim(text))
+		this.$history.append('<br/>');
+
     };
 
     JqTerm.prototype.appendError = function(errText) {
