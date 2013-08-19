@@ -1,5 +1,5 @@
 {
-	"name" : "jqterm",
+	"name" : "term",
 	"title" : "jqTerm",
 	"description" : "A JQuery plugin for a commandline emulator with custom interpreters and formatter",
 	"version" : "0.2.3",
