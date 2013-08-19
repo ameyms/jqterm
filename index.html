@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+
+    <title>Jqterm by ameyms</title>
+  </head>
+
+  <body>
+
+    <header>
+      <div class="container">
+        <h1>Jqterm</h1>
+        <h2>A JQuery plugin for a commandline emulator with custom interpreters and formatter</h2>
+
+        <section id="downloads">
+          <a href="https://github.com/ameyms/jqterm/zipball/master" class="btn">Download as .zip</a>
+          <a href="https://github.com/ameyms/jqterm/tarball/master" class="btn">Download as .tar.gz</a>
+          <a href="https://github.com/ameyms/jqterm" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
+        </section>
+      </div>
+    </header>
+
+    <div class="container">
+      <section id="main_content">
+        <h1>
+<a name="jqterm" class="anchor" href="#jqterm"><span class="octicon octicon-link"></span></a>jqterm</h1>
+
+<p>A JQuery plugin for a commandline emulator with custom interpreters and formatter</p>
+
+<h2>
+<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<p>In your HTML file, include the jqterm js and css files</p>
+
+<div class="highlight"><pre><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span> <span class="na">src=</span><span class="s">"jqterm.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">type=</span><span class="s">"text/css"</span> <span class="na">href=</span><span class="s">"jqterm.css"</span> <span class="nt">/&gt;</span>
+</pre></div>
+
+<p>To use emulate terminal inside div with id <code>terminal</code>, use following code:</p>
+
+<div class="highlight"><pre>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'#terminal'</span><span class="p">).</span><span class="nx">term</span><span class="p">({</span>
+
+  <span class="nx">interpreter</span><span class="o">:</span> <span class="nx">invokeCommand</span><span class="p">,</span>
+  <span class="nx">welcome</span><span class="o">:</span> <span class="s1">'Welcome to jqTerm. The commandline emulator written in JQuery'</span>
+
+<span class="p">});</span>
+
+</pre></div>
+
+<p>Where <code>invokeCommand</code> would be a function that accepts a tokenized command and returns jquery deferred
+If the command entered is </p>
+
+<pre lang="shell"><code>$ awesome_script -s "C:\Program Files\Foo\Bar One\my.pl" -o foo
+</code></pre>
+
+<p>The interpreter would receive following array as argument</p>
+
+<div class="highlight"><pre><span class="p">[</span><span class="s1">'awesome_script'</span><span class="p">,</span> <span class="s1">'-s'</span> <span class="s1">'C:\Program Files\Foo\Bar One\my.pl'</span><span class="p">,</span> <span class="s1">'-o'</span><span class="p">,</span> <span class="s1">'foo'</span><span class="p">]</span>
+</pre></div>
+
+<p>So the <code>invokeCommand</code> function would look like</p>
+
+<div class="highlight"><pre><span class="kd">function</span> <span class="nx">invokeCommand</span><span class="p">(</span><span class="nx">cmd</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">return</span> <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+
+    <span class="nx">url</span><span class="o">:</span> <span class="s1">'/cmd_interpreter'</span><span class="p">,</span>
+    <span class="nx">dataType</span><span class="o">:</span><span class="s1">'json'</span><span class="p">,</span>
+    <span class="nx">data</span><span class="o">:</span> <span class="p">{</span><span class="s1">'cmd'</span><span class="o">:</span><span class="nx">cmd</span><span class="p">}</span>
+  <span class="p">});</span>
+<span class="p">}</span>
+</pre></div>
+      </section>
+    </div>
+
+    
+  </body>
+</html>
