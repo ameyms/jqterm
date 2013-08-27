@@ -8,7 +8,7 @@ module.exports = function(grunt) {
         uglify: {
             options: {
     			     // the banner is inserted at the top of the output
-                     banner: '/*! <%= pkg.title %> v<%= pkg.version %>'+dev+'\n(c) <%= grunt.template.today("yyyy") %> Amey Sakhadeo\n<%= pkg.licenses[0].type %> License: <%= pkg.licenses[0].url %> */\n',
+                     banner: '/*! <%= pkg.name %> v<%= pkg.version %>'+dev+'\n(c) <%= grunt.template.today("yyyy") %> Amey Sakhadeo\n<%= pkg.licenses[0].type %> License: <%= pkg.licenses[0].url %> */\n',
                      preserveComments : 'some'
                  },
                  dist: {
@@ -33,7 +33,7 @@ module.exports = function(grunt) {
         cssmin: {
             add_banner: {
                 options: {
-                    banner: '/*! <%= pkg.title %> v<%= pkg.version %>'+dev+'\n(c) <%= grunt.template.today("yyyy") %> Amey Sakhadeo\n<%= pkg.licenses[0].type %> License: <%= pkg.licenses[0].url %> */'
+                    banner: '/*! <%= pkg.name %> v<%= pkg.version %>'+dev+'\n(c) <%= grunt.template.today("yyyy") %> Amey Sakhadeo\n<%= pkg.licenses[0].type %> License: <%= pkg.licenses[0].url %> */'
                 },
                 files: {
                     'dist/jquery.term.min.css': ['src/**/*.css']

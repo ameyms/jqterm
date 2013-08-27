@@ -1,4 +1,4 @@
-jqterm
+jqterm [![Build Status](https://travis-ci.org/ameyms/jqterm.png)](https://travis-ci.org/ameyms/jqterm)
 ======
 
 A JQuery plugin for a commandline emulator with custom interpreters and formatter
