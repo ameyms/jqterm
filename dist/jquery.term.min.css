@@ -1,0 +1,4 @@
+/*! Terminal Emulator v0.2.4
+(c) 2013 Amey Sakhadeo
+MIT License: https://github.com/ameyms/jqterm/blob/master/LICENSE */
+.jq-term-term{background-color:#333;color:#FCFCFC;padding:30px;font-family:Consolas,'Console Sans',monospace;outline:0}.jq-term-prompt-input::before{content:'$ ';color:#CCC}.jq-term-err{color:#FF093A}.jq-term-op{color:cyan}.jq-term-cmdline{color:#CCC}.jq-term-welcome{color:lime;padding-bottom:10px}:focus{outline:0}
